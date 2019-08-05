@@ -1,0 +1,231 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "NDWkVNTC+c2/WdSJlifs8pX1Ytg=",
+			"path": "github.com/bytom/crypto/ed25519",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "NFYyXP++dOS3z2AIvOgOX0EAkU4=",
+			"path": "github.com/bytom/crypto/ed25519/chainkd",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "7cdYbRomaR0UuDuhtjCgeH7e8Xs=",
+			"path": "github.com/bytom/crypto/ed25519/ecmath",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "eT13VyJb3mK5MoTr4o0+mogfMUs=",
+			"path": "github.com/bytom/crypto/ed25519/internal/edwards25519",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "zCPk/p/m3cr8kP4jroSzUJkUxTI=",
+			"path": "github.com/bytom/crypto/sha3pool",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "ezJVegoWEhLw4YFnfxcoPzWPBX4=",
+			"path": "github.com/bytom/encoding/blockchain",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "ZCB3oBCjd3PHxkVm47ivzg82VSk=",
+			"path": "github.com/bytom/encoding/bufpool",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "R20bDc1DdtPWwVlzecxDYVoW6D0=",
+			"path": "github.com/bytom/errors",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "6VLKAVx+eKBrYl0wyJ5J9Lvdzpw=",
+			"path": "github.com/bytom/protocol/bc",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "BvlrNv1rhnkvcjv5He0ghzixAxc=",
+			"path": "github.com/bytom/testutil",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "nbCxiVT48CWEg6l8L4SEJ5VfN9c=",
+			"origin": "github.com/vapor/vendor/github.com/golang/groupcache/lru",
+			"path": "github.com/golang/groupcache/lru",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "yqF125xVSkmfLpIVGrLlfE05IUk=",
+			"origin": "github.com/bytom/vendor/github.com/golang/protobuf/proto",
+			"path": "github.com/golang/protobuf/proto",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "BYvROBsiyAXK4sq6yhDe8RgT4LM=",
+			"origin": "github.com/vapor/vendor/github.com/sirupsen/logrus",
+			"path": "github.com/sirupsen/logrus",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "vQ6QMtF/UciTfadioJNrUXp6E3c=",
+			"path": "github.com/vapor/common",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "Ue/E9wrqwqD/o4xFt50E+hdj6S8=",
+			"path": "github.com/vapor/common/arithmetic",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "CmaxMkdhi3qnBvjvRO6qlGdbP2E=",
+			"path": "github.com/vapor/common/bech32",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "igMQtLPy55oLWHqAA856coNo948=",
+			"path": "github.com/vapor/consensus",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "DMNi1B87Z1Nb8Bwh1NJRlRuNGpQ=",
+			"path": "github.com/vapor/consensus/segwit",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "5xEInQOVyTtgCmMfYLQYw0E09bc=",
+			"path": "github.com/vapor/crypto",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "Zo9GdJdMLbX9IyPDMpXe3V4fVEk=",
+			"path": "github.com/vapor/crypto/ed25519",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "hG9KtoIHC0S8wy/I81tKNGxwdI0=",
+			"path": "github.com/vapor/crypto/ed25519/internal/edwards25519",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "qTDpKREPydt7S0yxgxEIkxUkQ6Q=",
+			"path": "github.com/vapor/crypto/sha3pool",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "E5lTVgDjPZt+tqRB+8USErdhNcY=",
+			"path": "github.com/vapor/encoding/blockchain",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "sHZqv3rMa3DsN0jmz+XQA6Fx/ck=",
+			"path": "github.com/vapor/encoding/bufpool",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "cX+W0SmXhi4jqHqLhVSDmSGHFko=",
+			"path": "github.com/vapor/encoding/json",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "ayZuVme3pUuOQtay7rryueSqHl4=",
+			"path": "github.com/vapor/errors",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "85GQeNfTs3fAo1Ma1GYROY6PrF8=",
+			"path": "github.com/vapor/math/checked",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "FKLXyWPLB/WS0CCJZS7mdP0kiUo=",
+			"path": "github.com/vapor/protocol/bc",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "dOQprmGNo6YvYdseExqBxH6Wq+Y=",
+			"path": "github.com/vapor/protocol/bc/types",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "1XhKErgHXFbljguslD5eWVTn/AY=",
+			"path": "github.com/vapor/protocol/vm",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "yNbRYdVtufurtrlYLw+VJYgXj1Y=",
+			"path": "github.com/vapor/protocol/vm/vmutil",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "y/oIaxq2d3WPizRZfVjo8RCRYTU=",
+			"origin": "github.com/vapor/vendor/golang.org/x/crypto/ripemd160",
+			"path": "golang.org/x/crypto/ripemd160",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "DDHnuGCrmkKSXdNzc8pmn6P5O28=",
+			"origin": "github.com/bytom/vendor/golang.org/x/crypto/sha3",
+			"path": "golang.org/x/crypto/sha3",
+			"revision": "ad371876155a570544fb6ceaa9a3e1e32ea2317d",
+			"revisionTime": "2019-05-05T01:46:17Z"
+		},
+		{
+			"checksumSHA1": "ZaU56svwLgiJD0y8JOB3+/mpYBA=",
+			"origin": "github.com/vapor/vendor/golang.org/x/crypto/ssh/terminal",
+			"path": "golang.org/x/crypto/ssh/terminal",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "Qz8Rxw0e60uPHj41Nt26UG6xphg=",
+			"origin": "github.com/vapor/vendor/golang.org/x/sys/unix",
+			"path": "golang.org/x/sys/unix",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "NGg7/qIJVUfXi7xnEyyDLocdi6Y=",
+			"origin": "github.com/vapor/vendor/gopkg.in/fatih/set.v0",
+			"path": "gopkg.in/fatih/set.v0",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		}
+	],
+	"rootPath": "github.com/vapor-sdk"
+}
