@@ -126,6 +126,18 @@
 			"revisionTime": "2019-08-01T07:06:00Z"
 		},
 		{
+			"checksumSHA1": "+q3gpDMcezt2mTHtIQir1+5o41I=",
+			"path": "github.com/vapor/crypto/ed25519/chainkd",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "wtqWSMCkbE7IcThi2GU09u77OBg=",
+			"path": "github.com/vapor/crypto/ed25519/ecmath",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
 			"checksumSHA1": "hG9KtoIHC0S8wy/I81tKNGxwdI0=",
 			"path": "github.com/vapor/crypto/ed25519/internal/edwards25519",
 			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
@@ -188,6 +200,12 @@
 		{
 			"checksumSHA1": "yNbRYdVtufurtrlYLw+VJYgXj1Y=",
 			"path": "github.com/vapor/protocol/vm/vmutil",
+			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
+			"revisionTime": "2019-08-01T07:06:00Z"
+		},
+		{
+			"checksumSHA1": "nFZCWXIBNPH8udtuABIYAyTsiYc=",
+			"path": "github.com/vapor/testutil",
 			"revision": "df9deca26ab5e99b48bae28fb8282ec3fa47d516",
 			"revisionTime": "2019-08-01T07:06:00Z"
 		},
