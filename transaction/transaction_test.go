@@ -3,7 +3,6 @@ package transaction
 import (
 	"testing"
 
-	chainjson "github.com/vapor/encoding/json"
 	"github.com/vapor/testutil"
 )
 
@@ -26,10 +25,10 @@ func TestDecodeRawTransaction(t *testing.T) {
 						InputID:          "7d9c3a6481fd249c78f6037d3c999a3fe753882bd13e072cecc8ce92fbbbb41b",
 						AssetID:          "bb16babcc936f9a7467bc9f615be17cb69809aa7cefd4287d4098690585b3991",
 						Amount:           10000000,
-						ControlProgram:   chainjson.HexBytes{0x0, 0x14, 0x4b, 0x69, 0x95, 0xdc, 0x11, 0x35, 0x4d, 0x44, 0xc6, 0xe3, 0x82, 0xc1, 0x9d, 0x6b, 0x92, 0xbd, 0xbb, 0xd3, 0xae, 0xa1},
+						ControlProgram:   "00144b6995dc11354d44c6e382c19d6b92bdbbd3aea1",
 						Address:          "vp1qfd5ethq3x4x5f3hrstqe66ujhkaa8t4p8vud4p",
 						SpentOutputID:    "873cd20c2cd260e1d2902f173bbc32490a9aa184b8e47aaedf3f37d7bf5225dd",
-						Arbitrary:        nil,
+						Arbitrary:        "",
 						WitnessArguments: nil,
 					},
 				},
@@ -40,9 +39,9 @@ func TestDecodeRawTransaction(t *testing.T) {
 						Position:       0,
 						AssetID:        "bb16babcc936f9a7467bc9f615be17cb69809aa7cefd4287d4098690585b3991",
 						Amount:         5000000,
-						ControlProgram: chainjson.HexBytes{0x0, 0x14, 0x96, 0x82, 0xe6, 0x4b, 0x21, 0x14, 0xf7, 0xc2, 0x58, 0x1a, 0xb1, 0xba, 0xc, 0x67, 0x31, 0x5d, 0x6, 0xaa, 0xea, 0x82},
+						ControlProgram: "00149682e64b2114f7c2581ab1ba0c67315d06aaea82",
 						Address:        "vp1qj6pwvjepznmuykq6kxaqcee3t5r2465z0hmr70",
-						Vote:           nil,
+						Vote:           "",
 					},
 					annotatedOutput{
 						Type:           "control",
@@ -50,9 +49,9 @@ func TestDecodeRawTransaction(t *testing.T) {
 						Position:       1,
 						AssetID:        "bb16babcc936f9a7467bc9f615be17cb69809aa7cefd4287d4098690585b3991",
 						Amount:         5000000,
-						ControlProgram: chainjson.HexBytes{0x0, 0x14, 0xda, 0x26, 0x41, 0x6f, 0xa7, 0x99, 0x47, 0xec, 0x6a, 0x56, 0x9e, 0x4, 0x93, 0xdb, 0xff, 0xec, 0x1a, 0x3f, 0x22, 0x34},
+						ControlProgram: "0014da26416fa79947ec6a569e0493dbffec1a3f2234",
 						Address:        "vp1qmgnyzma8n9r7c6jknczf8kllasdr7g35whjwpg",
-						Vote:           nil,
+						Vote:           "",
 					},
 				},
 				Fee: 0,
@@ -71,10 +70,10 @@ func TestDecodeRawTransaction(t *testing.T) {
 						InputID:          "e8bed028eadf67a683f9a4ccfac2bbd385b0e5abf8d30a9f8d4f1b814d536402",
 						AssetID:          "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
 						Amount:           10000,
-						ControlProgram:   chainjson.HexBytes{0x0, 0x14, 0xd6, 0x62, 0x16, 0xef, 0xa3, 0x17, 0x73, 0x97, 0x97, 0x3c, 0x6e, 0x17, 0x3f, 0x8f, 0x7f, 0x17, 0xa7, 0xb6, 0x4b, 0x81},
+						ControlProgram:   "0014d66216efa3177397973c6e173f8f7f17a7b64b81",
 						Address:          "vp1q6e3pdmarzaee09eudctnlrmlz7nmvjup8wtqxd",
 						SpentOutputID:    "933d1e2e7a1317f25ee1f75de6abf93867100c4190a9e3d2c4abe3485ebe63b7",
-						Arbitrary:        nil,
+						Arbitrary:        "",
 						WitnessArguments: nil,
 					},
 				},
@@ -85,9 +84,9 @@ func TestDecodeRawTransaction(t *testing.T) {
 						Position:       0,
 						AssetID:        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
 						Amount:         10000,
-						ControlProgram: chainjson.HexBytes{0x0, 0x14, 0xd6, 0x62, 0x16, 0xef, 0xa3, 0x17, 0x73, 0x97, 0x97, 0x3c, 0x6e, 0x17, 0x3f, 0x8f, 0x7f, 0x17, 0xa7, 0xb6, 0x4b, 0x81},
+						ControlProgram: "0014d66216efa3177397973c6e173f8f7f17a7b64b81",
 						Address:        "vp1q6e3pdmarzaee09eudctnlrmlz7nmvjup8wtqxd",
-						Vote:           nil,
+						Vote:           "",
 					},
 				},
 				Fee: 0,

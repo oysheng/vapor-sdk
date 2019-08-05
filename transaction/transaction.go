@@ -1,11 +1,12 @@
 package transaction
 
 import (
+	"encoding/hex"
+
 	"github.com/vapor/common"
 	"github.com/vapor/common/arithmetic"
 	"github.com/vapor/consensus"
 	"github.com/vapor/consensus/segwit"
-	chainjson "github.com/vapor/encoding/json"
 	"github.com/vapor/protocol/bc"
 	"github.com/vapor/protocol/bc/types"
 )
@@ -23,27 +24,27 @@ type Transaction struct {
 
 //annotatedInput means an annotated transaction input.
 type annotatedInput struct {
-	Type             string               `json:"type"`
-	InputID          string               `json:"input_id"`
-	AssetID          string               `json:"asset_id"`
-	Amount           uint64               `json:"amount"`
-	ControlProgram   chainjson.HexBytes   `json:"control_program,omitempty"`
-	Address          string               `json:"address,omitempty"`
-	SpentOutputID    string               `json:"spent_output_id,omitempty"`
-	Arbitrary        chainjson.HexBytes   `json:"arbitrary,omitempty"`
-	WitnessArguments []chainjson.HexBytes `json:"witness_arguments"`
+	Type             string   `json:"type"`
+	InputID          string   `json:"input_id"`
+	AssetID          string   `json:"asset_id"`
+	Amount           uint64   `json:"amount"`
+	ControlProgram   string   `json:"control_program,omitempty"`
+	Address          string   `json:"address,omitempty"`
+	SpentOutputID    string   `json:"spent_output_id,omitempty"`
+	Arbitrary        string   `json:"arbitrary,omitempty"`
+	WitnessArguments []string `json:"witness_arguments"`
 }
 
 //annotatedOutput means an annotated transaction output.
 type annotatedOutput struct {
-	Type           string             `json:"type"`
-	OutputID       string             `json:"id"`
-	Position       int                `json:"position"`
-	AssetID        string             `json:"asset_id"`
-	Amount         uint64             `json:"amount"`
-	ControlProgram chainjson.HexBytes `json:"control_program"`
-	Address        string             `json:"address,omitempty"`
-	Vote           chainjson.HexBytes `json:"vote,omitempty"`
+	Type           string `json:"type"`
+	OutputID       string `json:"id"`
+	Position       int    `json:"position"`
+	AssetID        string `json:"asset_id"`
+	Amount         uint64 `json:"amount"`
+	ControlProgram string `json:"control_program"`
+	Address        string `json:"address,omitempty"`
+	Vote           string `json:"vote,omitempty"`
 }
 
 // DecodeRawTransaction decode raw transaction
@@ -91,37 +92,40 @@ func buildAnnotatedInput(tx *types.Tx, i uint32) annotatedInput {
 	switch e := e.(type) {
 	case *bc.VetoInput:
 		in.Type = "veto"
-		in.ControlProgram = orig.ControlProgram()
-		in.Address = getAddressFromControlProgram(in.ControlProgram, false)
+		controlProgram := orig.ControlProgram()
+		in.ControlProgram = hex.EncodeToString(controlProgram)
+		in.Address = getAddressFromControlProgram(controlProgram, false)
 		in.SpentOutputID = e.SpentOutputId.String()
 		arguments := orig.Arguments()
 		for _, arg := range arguments {
-			in.WitnessArguments = append(in.WitnessArguments, arg)
+			in.WitnessArguments = append(in.WitnessArguments, hex.EncodeToString(arg))
 		}
 
 	case *bc.CrossChainInput:
 		in.Type = "cross_chain_in"
-		in.ControlProgram = orig.ControlProgram()
-		in.Address = getAddressFromControlProgram(in.ControlProgram, true)
+		controlProgram := orig.ControlProgram()
+		in.ControlProgram = hex.EncodeToString(controlProgram)
+		in.Address = getAddressFromControlProgram(controlProgram, true)
 		in.SpentOutputID = e.MainchainOutputId.String()
 		arguments := orig.Arguments()
 		for _, arg := range arguments {
-			in.WitnessArguments = append(in.WitnessArguments, arg)
+			in.WitnessArguments = append(in.WitnessArguments, hex.EncodeToString(arg))
 		}
 
 	case *bc.Spend:
 		in.Type = "spend"
-		in.ControlProgram = orig.ControlProgram()
-		in.Address = getAddressFromControlProgram(in.ControlProgram, false)
+		controlProgram := orig.ControlProgram()
+		in.ControlProgram = hex.EncodeToString(controlProgram)
+		in.Address = getAddressFromControlProgram(controlProgram, false)
 		in.SpentOutputID = e.SpentOutputId.String()
 		arguments := orig.Arguments()
 		for _, arg := range arguments {
-			in.WitnessArguments = append(in.WitnessArguments, arg)
+			in.WitnessArguments = append(in.WitnessArguments, hex.EncodeToString(arg))
 		}
 
 	case *bc.Coinbase:
 		in.Type = "coinbase"
-		in.Arbitrary = e.Arbitrary
+		in.Arbitrary = hex.EncodeToString(e.Arbitrary)
 	}
 	return in
 }
@@ -135,7 +139,7 @@ func buildAnnotatedOutput(tx *types.Tx, idx int) annotatedOutput {
 		Position:       idx,
 		AssetID:        orig.AssetAmount().AssetId.String(),
 		Amount:         orig.AssetAmount().Amount,
-		ControlProgram: orig.ControlProgram(),
+		ControlProgram: hex.EncodeToString(orig.ControlProgram()),
 	}
 
 	var isMainchainAddress bool
@@ -150,7 +154,7 @@ func buildAnnotatedOutput(tx *types.Tx, idx int) annotatedOutput {
 
 	case *bc.VoteOutput:
 		out.Type = "vote"
-		out.Vote = e.Vote
+		out.Vote = hex.EncodeToString(e.Vote)
 		isMainchainAddress = false
 	}
 
