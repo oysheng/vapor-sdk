@@ -3,8 +3,8 @@ package transaction
 import (
 	"testing"
 
-	"github.com/bytom/testutil"
 	chainjson "github.com/vapor/encoding/json"
+	"github.com/vapor/testutil"
 )
 
 func TestDecodeRawTransaction(t *testing.T) {
@@ -58,6 +58,41 @@ func TestDecodeRawTransaction(t *testing.T) {
 				Fee: 0,
 			},
 		},
+		{
+			rawTransaction: `07010001015d015bbfa8cb0c58b545bf844dd642b6b5333ac76b4b789b3795a129a93a9fe47c3227ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff904e0101160014d66216efa3177397973c6e173f8f7f17a7b64b81010001013c003affffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff904e01160014d66216efa3177397973c6e173f8f7f17a7b64b8100`,
+			wantTx: &Transaction{
+				TxID:      "8d0010cb3cd757d6c2dbe0864f18c0651c9c1cbdc4ca68219481b182aef47527",
+				Version:   1,
+				Size:      165,
+				TimeRange: 0,
+				Inputs: []annotatedInput{
+					annotatedInput{
+						Type:             "spend",
+						InputID:          "e8bed028eadf67a683f9a4ccfac2bbd385b0e5abf8d30a9f8d4f1b814d536402",
+						AssetID:          "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+						Amount:           10000,
+						ControlProgram:   chainjson.HexBytes{0x0, 0x14, 0xd6, 0x62, 0x16, 0xef, 0xa3, 0x17, 0x73, 0x97, 0x97, 0x3c, 0x6e, 0x17, 0x3f, 0x8f, 0x7f, 0x17, 0xa7, 0xb6, 0x4b, 0x81},
+						Address:          "vp1q6e3pdmarzaee09eudctnlrmlz7nmvjup8wtqxd",
+						SpentOutputID:    "933d1e2e7a1317f25ee1f75de6abf93867100c4190a9e3d2c4abe3485ebe63b7",
+						Arbitrary:        nil,
+						WitnessArguments: nil,
+					},
+				},
+				Outputs: []annotatedOutput{
+					annotatedOutput{
+						Type:           "control",
+						OutputID:       "a92271244e13fee0720385b27444fee7cffa51810d42999b8c9f01088fedf9c5",
+						Position:       0,
+						AssetID:        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+						Amount:         10000,
+						ControlProgram: chainjson.HexBytes{0x0, 0x14, 0xd6, 0x62, 0x16, 0xef, 0xa3, 0x17, 0x73, 0x97, 0x97, 0x3c, 0x6e, 0x17, 0x3f, 0x8f, 0x7f, 0x17, 0xa7, 0xb6, 0x4b, 0x81},
+						Address:        "vp1q6e3pdmarzaee09eudctnlrmlz7nmvjup8wtqxd",
+						Vote:           nil,
+					},
+				},
+				Fee: 0,
+			},
+		},
 	}
 
 	for i, c := range cases {
@@ -67,7 +102,7 @@ func TestDecodeRawTransaction(t *testing.T) {
 		}
 
 		if !testutil.DeepEqual(gotTx, c.wantTx) {
-			t.Errorf(`case #%d, annotated transaction got=%#v;\n want=%#v`, i, gotTx, c.wantTx)
+			t.Errorf("case #%d, annotated transaction got=%#v, want=%#v", i, gotTx, c.wantTx)
 		}
 	}
 }
