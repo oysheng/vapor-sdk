@@ -2,6 +2,7 @@ package transaction
 
 import (
 	"encoding/hex"
+	"encoding/json"
 
 	"github.com/vapor/common"
 	"github.com/vapor/common/arithmetic"
@@ -32,13 +33,14 @@ type annotatedInput struct {
 	Address          string   `json:"address,omitempty"`
 	SpentOutputID    string   `json:"spent_output_id,omitempty"`
 	Arbitrary        string   `json:"arbitrary,omitempty"`
-	WitnessArguments []string `json:"witness_arguments"`
+	WitnessArguments []string `json:"arguments,omitempty"`
+	Vote             string   `json:"vote,omitempty"`
 }
 
 //annotatedOutput means an annotated transaction output.
 type annotatedOutput struct {
 	Type           string `json:"type"`
-	OutputID       string `json:"output_id"`
+	OutputID       string `json:"utxo_id"`
 	Position       int    `json:"position"`
 	AssetID        string `json:"asset_id"`
 	Amount         int64  `json:"amount"`
@@ -48,7 +50,7 @@ type annotatedOutput struct {
 }
 
 // DecodeRawTransaction decode raw transaction
-func DecodeRawTransaction(rawTransaction string) (*Transaction, error) {
+func DecodeRawTransaction(rawTransaction string) ([]byte, error) {
 	var rawTx types.Tx
 	if err := rawTx.UnmarshalText([]byte(rawTransaction)); err != nil {
 		return nil, err
@@ -75,7 +77,11 @@ func DecodeRawTransaction(rawTransaction string) (*Transaction, error) {
 		return nil, err
 	}
 	tx.Fee = int64(txFee)
-	return tx, nil
+	jsonTx, err := json.Marshal(tx)
+	if err != nil {
+		return nil, err
+	}
+	return jsonTx, nil
 }
 
 // buildAnnotatedInput build the annotated input.
