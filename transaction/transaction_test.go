@@ -2,6 +2,7 @@ package transaction
 
 import (
 	"encoding/json"
+	"errors"
 	"testing"
 
 	"github.com/vapor/testutil"
@@ -96,9 +97,9 @@ func TestDecodeRawTransaction(t *testing.T) {
 	}
 
 	for i, c := range cases {
-		jsonTx, err := DecodeRawTransaction(c.rawTransaction)
-		if err != nil {
-			t.Fatal(err)
+		jsonTx := DecodeRawTransaction(c.rawTransaction)
+		if jsonTx == nil {
+			t.Fatal(errors.New("error"))
 		}
 
 		gotTx := &Transaction{}

@@ -50,10 +50,10 @@ type annotatedOutput struct {
 }
 
 // DecodeRawTransaction decode raw transaction
-func DecodeRawTransaction(rawTransaction string) ([]byte, error) {
+func DecodeRawTransaction(rawTransaction string) []byte {
 	var rawTx types.Tx
 	if err := rawTx.UnmarshalText([]byte(rawTransaction)); err != nil {
-		return nil, err
+		return nil
 	}
 
 	tx := &Transaction{
@@ -74,14 +74,14 @@ func DecodeRawTransaction(rawTransaction string) ([]byte, error) {
 
 	txFee, err := arithmetic.CalculateTxFee(&rawTx)
 	if err != nil {
-		return nil, err
+		return nil
 	}
 	tx.Fee = int64(txFee)
 	jsonTx, err := json.Marshal(tx)
 	if err != nil {
-		return nil, err
+		return nil
 	}
-	return jsonTx, nil
+	return jsonTx
 }
 
 // buildAnnotatedInput build the annotated input.
