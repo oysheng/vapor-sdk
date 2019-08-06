@@ -94,6 +94,52 @@ func TestDecodeRawTransaction(t *testing.T) {
 				Fee: 0,
 			},
 		},
+		{
+			rawTransaction: `07010001016401628a3e00e2f6cfe2765fd0b51201d3d5e44ba461aa3cd57306068b7bdf0d4a105dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8080b0e8d3eb94d5010101160014973616e27ba7468f3a54820c97ab1b22094bd42d630240d8f36726bf7e69a01afdf05251a2338fb8c2595d881898b5903302d32619185f41c90990e7160593fd4dc416fb38b3845f32277685028e52f01fa98a4d121a0720fbbb8233f1435c2c0ab26ee4aeb94e534490c65a48e253a5dc64cad835462d290201430041ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8080c7e4a28dfed401011600140bcc5b6e8f2cb3390cf6d45fca37ed86062536010001820102409742a39a0bcfb5b7ac8f56f1894fbb694b53ebf58f9a032c36cc22d57a06e49e94ff7199063fb7a78190624fa3530f611404b56fc9af91dcaf4639614512cb643fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8080e983b1de16011600143eb3371ee17bfa7d1e6af07c2e1fc08b3b1177ad00`,
+			wantTx: &Transaction{
+				TxID:      "4b08a9a705bc83aa4015f7682d054603e6d335a39cdee27baba23681014ce5dd",
+				Version:   1,
+				Size:      411,
+				TimeRange: 0,
+				Inputs: []annotatedInput{
+					annotatedInput{
+						Type:           "spend",
+						InputID:        "645045dc9e8bee31738f1d30f702e6678533e215c9175920b3582db9d8026eeb",
+						AssetID:        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+						Amount:         120000000000000000,
+						ControlProgram: "0014973616e27ba7468f3a54820c97ab1b22094bd42d",
+						Address:        "vp1qjumpdcnm5arg7wj5sgxf02cmygy5h4pde4aynj",
+						SpentOutputID:  "fcf9d0fae86697cd396d81a60cbd296f74ba337d76240d12f7baf3f1e548f771",
+						WitnessArguments: []string{
+							"d8f36726bf7e69a01afdf05251a2338fb8c2595d881898b5903302d32619185f41c90990e7160593fd4dc416fb38b3845f32277685028e52f01fa98a4d121a07",
+							"fbbb8233f1435c2c0ab26ee4aeb94e534490c65a48e253a5dc64cad835462d29",
+						},
+					},
+				},
+				Outputs: []annotatedOutput{
+					annotatedOutput{
+						Type:           "control",
+						OutputID:       "7f78999d9e8c99a0f4ad763da4475c45bd920153a0e02a38b3b9dfdfac4f84a3",
+						Position:       0,
+						AssetID:        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+						Amount:         119900000000000000,
+						ControlProgram: "00140bcc5b6e8f2cb3390cf6d45fca37ed8606253601",
+						Address:        "vp1qp0x9km509jenjr8k630u5dldscrz2dsp8vafzs",
+					},
+					annotatedOutput{
+						Type:           "vote",
+						OutputID:       "3b4b503d394a598c88268eba18626d6868dbbf66abd98485573f7f334a3d0124",
+						Position:       1,
+						AssetID:        "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+						Amount:         100000000000000,
+						ControlProgram: "00143eb3371ee17bfa7d1e6af07c2e1fc08b3b1177ad",
+						Address:        "vp1q86enw8hp00a868n27p7zu87q3va3zaady6805f",
+						Vote:           "9742a39a0bcfb5b7ac8f56f1894fbb694b53ebf58f9a032c36cc22d57a06e49e94ff7199063fb7a78190624fa3530f611404b56fc9af91dcaf4639614512cb64",
+					},
+				},
+				Fee: 0,
+			},
+		},
 	}
 
 	for i, c := range cases {

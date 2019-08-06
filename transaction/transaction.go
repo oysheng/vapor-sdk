@@ -14,7 +14,7 @@ import (
 
 // Transaction is the annotated transaction
 type Transaction struct {
-	TxID      string            `json:"tx_id"`
+	TxID      string            `json:"hash"`
 	Version   int64             `json:"version"`
 	Size      int64             `json:"size"`
 	TimeRange int64             `json:"time_range"`
@@ -27,9 +27,9 @@ type Transaction struct {
 type annotatedInput struct {
 	Type             string   `json:"type"`
 	InputID          string   `json:"input_id"`
-	AssetID          string   `json:"asset_id"`
+	AssetID          string   `json:"asset"`
 	Amount           int64    `json:"amount"`
-	ControlProgram   string   `json:"control_program,omitempty"`
+	ControlProgram   string   `json:"script,omitempty"`
 	Address          string   `json:"address,omitempty"`
 	SpentOutputID    string   `json:"spent_output_id,omitempty"`
 	Arbitrary        string   `json:"arbitrary,omitempty"`
@@ -42,9 +42,9 @@ type annotatedOutput struct {
 	Type           string `json:"type"`
 	OutputID       string `json:"utxo_id"`
 	Position       int    `json:"position"`
-	AssetID        string `json:"asset_id"`
+	AssetID        string `json:"asset"`
 	Amount         int64  `json:"amount"`
-	ControlProgram string `json:"control_program"`
+	ControlProgram string `json:"script"`
 	Address        string `json:"address,omitempty"`
 	Vote           string `json:"vote,omitempty"`
 }
@@ -92,6 +92,9 @@ func buildAnnotatedInput(tx *types.Tx, i uint32) annotatedInput {
 		assetID := orig.AssetID()
 		in.AssetID = assetID.String()
 		in.Amount = int64(orig.Amount())
+		if vetoInput, ok := orig.TypedInput.(*types.VetoInput); ok {
+			in.Vote = hex.EncodeToString(vetoInput.Vote)
+		}
 	} else {
 		in.AssetID = consensus.BTMAssetID.String()
 	}
