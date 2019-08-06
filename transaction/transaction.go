@@ -38,7 +38,7 @@ type annotatedInput struct {
 //annotatedOutput means an annotated transaction output.
 type annotatedOutput struct {
 	Type           string `json:"type"`
-	OutputID       string `json:"id"`
+	OutputID       string `json:"output_id"`
 	Position       int    `json:"position"`
 	AssetID        string `json:"asset_id"`
 	Amount         uint64 `json:"amount"`
