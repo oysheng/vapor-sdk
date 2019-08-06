@@ -14,12 +14,12 @@ import (
 // Transaction is the annotated transaction
 type Transaction struct {
 	TxID      string            `json:"tx_id"`
-	Version   uint64            `json:"version"`
-	Size      uint64            `json:"size"`
-	TimeRange uint64            `json:"time_range"`
+	Version   int64             `json:"version"`
+	Size      int64             `json:"size"`
+	TimeRange int64             `json:"time_range"`
 	Inputs    []annotatedInput  `json:"inputs"`
 	Outputs   []annotatedOutput `json:"outputs"`
-	Fee       uint64            `json:"fee"`
+	Fee       int64             `json:"fee"`
 }
 
 //annotatedInput means an annotated transaction input.
@@ -27,7 +27,7 @@ type annotatedInput struct {
 	Type             string   `json:"type"`
 	InputID          string   `json:"input_id"`
 	AssetID          string   `json:"asset_id"`
-	Amount           uint64   `json:"amount"`
+	Amount           int64    `json:"amount"`
 	ControlProgram   string   `json:"control_program,omitempty"`
 	Address          string   `json:"address,omitempty"`
 	SpentOutputID    string   `json:"spent_output_id,omitempty"`
@@ -41,7 +41,7 @@ type annotatedOutput struct {
 	OutputID       string `json:"output_id"`
 	Position       int    `json:"position"`
 	AssetID        string `json:"asset_id"`
-	Amount         uint64 `json:"amount"`
+	Amount         int64  `json:"amount"`
 	ControlProgram string `json:"control_program"`
 	Address        string `json:"address,omitempty"`
 	Vote           string `json:"vote,omitempty"`
@@ -56,9 +56,9 @@ func DecodeRawTransaction(rawTransaction string) (*Transaction, error) {
 
 	tx := &Transaction{
 		TxID:      rawTx.ID.String(),
-		Version:   rawTx.Version,
-		Size:      rawTx.SerializedSize,
-		TimeRange: rawTx.TimeRange,
+		Version:   int64(rawTx.Version),
+		Size:      int64(rawTx.SerializedSize),
+		TimeRange: int64(rawTx.TimeRange),
 		Inputs:    []annotatedInput{},
 		Outputs:   []annotatedOutput{},
 	}
@@ -70,7 +70,11 @@ func DecodeRawTransaction(rawTransaction string) (*Transaction, error) {
 		tx.Outputs = append(tx.Outputs, buildAnnotatedOutput(&rawTx, i))
 	}
 
-	tx.Fee, _ = arithmetic.CalculateTxFee(&rawTx)
+	txFee, err := arithmetic.CalculateTxFee(&rawTx)
+	if err != nil {
+		return nil, err
+	}
+	tx.Fee = int64(txFee)
 	return tx, nil
 }
 
@@ -81,7 +85,7 @@ func buildAnnotatedInput(tx *types.Tx, i uint32) annotatedInput {
 	if orig.InputType() != types.CoinbaseInputType {
 		assetID := orig.AssetID()
 		in.AssetID = assetID.String()
-		in.Amount = orig.Amount()
+		in.Amount = int64(orig.Amount())
 	} else {
 		in.AssetID = consensus.BTMAssetID.String()
 	}
@@ -138,7 +142,7 @@ func buildAnnotatedOutput(tx *types.Tx, idx int) annotatedOutput {
 		OutputID:       outid.String(),
 		Position:       idx,
 		AssetID:        orig.AssetAmount().AssetId.String(),
-		Amount:         orig.AssetAmount().Amount,
+		Amount:         int64(orig.AssetAmount().Amount),
 		ControlProgram: hex.EncodeToString(orig.ControlProgram()),
 	}
 
