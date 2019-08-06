@@ -14,7 +14,7 @@ Decode a serialized transaction hex string into a JSON object describing the tra
 
 `Object`:
 
-- `String` - *tx_id*, transaction ID.
+- `String` - *hash*, transaction ID.
 - `Integer` - *version*, version of transaction.
 - `String` - *size*, size of transaction.
 - `String` - *time_range*, time range of transaction.
@@ -22,20 +22,20 @@ Decode a serialized transaction hex string into a JSON object describing the tra
 - `Array of Object` - *inputs*, object of inputs for the transaction.
   - `String` - *type*, the type of input action, available option include: 'veto', 'cross_chain_in', 'spend', 'coinbase'.
   - `String` - *input_id*, hash of input action.
-  - `String` - *asset_id*, asset id.
+  - `String` - *asset*, asset id.
   - `Integer` - *amount*, amount of asset.
-  - `String` - *control_program*, control program of account, it only exist when type is 'veto', 'spend', 'cross_chain_in'.
+  - `String` - *script*, control program of account, it only exist when type is 'veto', 'spend', 'cross_chain_in'.
   - `String` - *address*, address of account, it only exist when type is 'veto', 'spend', 'cross_chain_in'.
   - `String` - *spent_output_id*, the front of outputID to be spent in this input, it only exist when type is 'veto', 'spend', 'cross_chain_in'.
   - `String` - *arbitrary*, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.
-  - `Array of String` - *witness_arguments*, witness arguments.
+  - `Array of String` - *arguments*, witness arguments.
 - `Array of Object` - *outputs*, object of outputs for the transaction.
   - `String` - *type*, the type of output action, available option include: 'control', 'cross_chain_out', 'vote', 'retire'.
   - `String` - *output_id*, outputid related to utxo.
   - `Integer` - *position*, position of outputs.
-  - `String` - *asset_id*, asset id.
+  - `String` - *asset*, asset id.
   - `Integer` - *amount*, amount of asset.
-  - `String` - *control_program*, control program of account.
+  - `String` - *script*, control program of account.
   - `String` - *address*, address of account.
   - `String` - *vote*, vote xpub, it only exist when type is 'vote'.
 
@@ -58,32 +58,32 @@ Decode a serialized transaction hex string into a JSON object describing the tra
     {
       "type": "spend",
       "input_id": "7d9c3a6481fd249c78f6037d3c999a3fe753882bd13e072cecc8ce92fbbbb41b",
-      "asset_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "asset": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
       "amount": 10000000,
-      "control_program": "00144b6995dc11354d44c6e382c19d6b92bdbbd3aea1",
-      "address": "sp1qfd5ethq3x4x5f3hrstqe66ujhkaa8t4p0f7942",
+      "script": "00144b6995dc11354d44c6e382c19d6b92bdbbd3aea1",
+      "address": "vp1qfd5ethq3x4x5f3hrstqe66ujhkaa8t4p8vud4p",
       "spent_output_id": "873cd20c2cd260e1d2902f173bbc32490a9aa184b8e47aaedf3f37d7bf5225dd",
-      "witness_arguments": null
+      "arguments": null
     }
   ],
   "outputs": [
     {
       "type": "control",
-      "output_id": "1df78ee679f30bb4597e1c3e459a0cd0429e69de875dd85a57fa34f94a59aba4",
+      "utxo_id": "1df78ee679f30bb4597e1c3e459a0cd0429e69de875dd85a57fa34f94a59aba4",
       "position": 0,
-      "asset_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "asset": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
       "amount": 5000000,
-      "control_program": "00149682e64b2114f7c2581ab1ba0c67315d06aaea82",
-      "address": "sp1qj6pwvjepznmuykq6kxaqcee3t5r2465z8jet7y"
+      "script": "00149682e64b2114f7c2581ab1ba0c67315d06aaea82",
+      "address": "vp1qj6pwvjepznmuykq6kxaqcee3t5r2465z0hmr70"
     },
     {
       "type": "control",
-      "output_id": "6d1116c361d8001e5f2d491c796eb36b5cb53dd630c1310a9be13742fd6e9cbc",
+      "utxo_id": "6d1116c361d8001e5f2d491c796eb36b5cb53dd630c1310a9be13742fd6e9cbc",
       "position": 1,
-      "asset_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "asset": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
       "amount": 5000000,
-      "control_program": "0014da26416fa79947ec6a569e0493dbffec1a3f2234",
-      "address": "sp1qmgnyzma8n9r7c6jknczf8kllasdr7g35xjsxpr"
+      "script": "0014da26416fa79947ec6a569e0493dbffec1a3f2234",
+      "address": "vp1qmgnyzma8n9r7c6jknczf8kllasdr7g35whjwpg"
     }
   ]
 }
