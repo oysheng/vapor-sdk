@@ -10,45 +10,9 @@ import (
 	"github.com/vapor/consensus/segwit"
 	"github.com/vapor/protocol/bc"
 	"github.com/vapor/protocol/bc/types"
+
+	"github.com/vapor-sdk/util"
 )
-
-// Transaction is the annotated transaction
-type Transaction struct {
-	TxID      string            `json:"hash"`
-	Version   int64             `json:"version"`
-	Size      int64             `json:"size"`
-	TimeRange int64             `json:"time_range"`
-	Inputs    []annotatedInput  `json:"inputs"`
-	Outputs   []annotatedOutput `json:"outputs"`
-	Fee       int64             `json:"fee"`
-}
-
-//annotatedInput means an annotated transaction input.
-type annotatedInput struct {
-	Type             string   `json:"type"`
-	InputID          string   `json:"input_id"`
-	AssetID          string   `json:"asset"`
-	Amount           int64    `json:"amount"`
-	ControlProgram   string   `json:"script,omitempty"`
-	Address          string   `json:"address,omitempty"`
-	SpentOutputID    string   `json:"spent_output_id,omitempty"`
-	Arbitrary        string   `json:"arbitrary,omitempty"`
-	WitnessArguments []string `json:"arguments,omitempty"`
-	Vote             string   `json:"vote,omitempty"`
-	SignData         string   `json:"sign_data,omitempty"`
-}
-
-//annotatedOutput means an annotated transaction output.
-type annotatedOutput struct {
-	Type           string `json:"type"`
-	OutputID       string `json:"utxo_id"`
-	Position       int    `json:"position"`
-	AssetID        string `json:"asset"`
-	Amount         int64  `json:"amount"`
-	ControlProgram string `json:"script"`
-	Address        string `json:"address,omitempty"`
-	Vote           string `json:"vote,omitempty"`
-}
 
 // VaporDecodeRawTx decode raw transaction
 func VaporDecodeRawTx(rawTransaction string) []byte {
@@ -57,13 +21,13 @@ func VaporDecodeRawTx(rawTransaction string) []byte {
 		return nil
 	}
 
-	tx := &Transaction{
+	tx := &util.Transaction{
 		TxID:      rawTx.ID.String(),
 		Version:   int64(rawTx.Version),
 		Size:      int64(rawTx.SerializedSize),
 		TimeRange: int64(rawTx.TimeRange),
-		Inputs:    []annotatedInput{},
-		Outputs:   []annotatedOutput{},
+		Inputs:    []util.AnnotatedInput{},
+		Outputs:   []util.AnnotatedOutput{},
 	}
 
 	for i := range rawTx.Inputs {
@@ -86,9 +50,9 @@ func VaporDecodeRawTx(rawTransaction string) []byte {
 }
 
 // buildAnnotatedInput build the annotated input.
-func buildAnnotatedInput(tx *types.Tx, i uint32) annotatedInput {
+func buildAnnotatedInput(tx *types.Tx, i uint32) util.AnnotatedInput {
 	orig := tx.Inputs[i]
-	in := annotatedInput{}
+	in := util.AnnotatedInput{}
 	if orig.InputType() != types.CoinbaseInputType {
 		assetID := orig.AssetID()
 		in.AssetID = assetID.String()
@@ -147,10 +111,10 @@ func buildAnnotatedInput(tx *types.Tx, i uint32) annotatedInput {
 }
 
 // buildAnnotatedOutput build the annotated output.
-func buildAnnotatedOutput(tx *types.Tx, idx int) annotatedOutput {
+func buildAnnotatedOutput(tx *types.Tx, idx int) util.AnnotatedOutput {
 	orig := tx.Outputs[idx]
 	outid := tx.OutputID(idx)
-	out := annotatedOutput{
+	out := util.AnnotatedOutput{
 		OutputID:       outid.String(),
 		Position:       idx,
 		AssetID:        orig.AssetAmount().AssetId.String(),
@@ -179,11 +143,10 @@ func buildAnnotatedOutput(tx *types.Tx, idx int) annotatedOutput {
 }
 
 func getAddressFromControlProgram(prog []byte, isMainchain bool) string {
-	netParams := &consensus.ActiveNetParams
+	netParams := &consensus.MainNetParams
 	if isMainchain {
-		netParams = consensus.BytomMainNetParams(&consensus.ActiveNetParams)
+		netParams = consensus.BytomMainNetParams(&consensus.MainNetParams)
 	}
-
 	if segwit.IsP2WPKHScript(prog) {
 		if pubHash, err := segwit.GetHashFromStandardProg(prog); err == nil {
 			return buildP2PKHAddress(pubHash, netParams)
