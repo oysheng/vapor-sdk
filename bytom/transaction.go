@@ -135,7 +135,7 @@ func getAddressFromControlProgram(prog []byte) string {
 }
 
 func buildP2PKHAddress(pubHash []byte) string {
-	address, err := common.NewAddressWitnessPubKeyHash(pubHash, &consensus.ActiveNetParams)
+	address, err := common.NewAddressWitnessPubKeyHash(pubHash, &consensus.MainNetParams)
 	if err != nil {
 		return ""
 	}
@@ -143,7 +143,7 @@ func buildP2PKHAddress(pubHash []byte) string {
 }
 
 func buildP2SHAddress(scriptHash []byte) string {
-	address, err := common.NewAddressWitnessScriptHash(scriptHash, &consensus.ActiveNetParams)
+	address, err := common.NewAddressWitnessScriptHash(scriptHash, &consensus.MainNetParams)
 	if err != nil {
 		return ""
 	}
