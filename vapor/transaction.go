@@ -50,8 +50,8 @@ type annotatedOutput struct {
 	Vote           string `json:"vote,omitempty"`
 }
 
-// DecodeRawTransaction decode raw transaction
-func DecodeRawTransaction(rawTransaction string) []byte {
+// VaporDecodeRawTx decode raw transaction
+func VaporDecodeRawTx(rawTransaction string) []byte {
 	var rawTx types.Tx
 	if err := rawTx.UnmarshalText([]byte(rawTransaction)); err != nil {
 		return nil

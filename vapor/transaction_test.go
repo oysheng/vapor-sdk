@@ -146,7 +146,7 @@ func TestDecodeRawTransaction(t *testing.T) {
 	}
 
 	for i, c := range cases {
-		jsonTx := DecodeRawTransaction(c.rawTransaction)
+		jsonTx := VaporDecodeRawTx(c.rawTransaction)
 		if jsonTx == nil {
 			t.Fatal(errors.New("error"))
 		}
