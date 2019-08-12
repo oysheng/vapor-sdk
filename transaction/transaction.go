@@ -35,6 +35,7 @@ type annotatedInput struct {
 	Arbitrary        string   `json:"arbitrary,omitempty"`
 	WitnessArguments []string `json:"arguments,omitempty"`
 	Vote             string   `json:"vote,omitempty"`
+	SignData         string   `json:"sign_data,omitempty"`
 }
 
 //annotatedOutput means an annotated transaction output.
@@ -92,6 +93,8 @@ func buildAnnotatedInput(tx *types.Tx, i uint32) annotatedInput {
 		assetID := orig.AssetID()
 		in.AssetID = assetID.String()
 		in.Amount = int64(orig.Amount())
+		signData := tx.SigHash(i)
+		in.SignData = signData.String()
 		if vetoInput, ok := orig.TypedInput.(*types.VetoInput); ok {
 			in.Vote = hex.EncodeToString(vetoInput.Vote)
 		}

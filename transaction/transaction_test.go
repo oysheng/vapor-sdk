@@ -32,6 +32,7 @@ func TestDecodeRawTransaction(t *testing.T) {
 						SpentOutputID:    "873cd20c2cd260e1d2902f173bbc32490a9aa184b8e47aaedf3f37d7bf5225dd",
 						Arbitrary:        "",
 						WitnessArguments: nil,
+						SignData:         "96b1454d0ca5fd05f321345149ab526ad14be9ae364fdb6e6bda5825b4e1c388",
 					},
 				},
 				Outputs: []annotatedOutput{
@@ -77,6 +78,7 @@ func TestDecodeRawTransaction(t *testing.T) {
 						SpentOutputID:    "933d1e2e7a1317f25ee1f75de6abf93867100c4190a9e3d2c4abe3485ebe63b7",
 						Arbitrary:        "",
 						WitnessArguments: nil,
+						SignData:         "6e142176d423e825f27971c928ca09e174fc7e8134428c19b3a33e7d6a7abfac",
 					},
 				},
 				Outputs: []annotatedOutput{
@@ -114,6 +116,7 @@ func TestDecodeRawTransaction(t *testing.T) {
 							"d8f36726bf7e69a01afdf05251a2338fb8c2595d881898b5903302d32619185f41c90990e7160593fd4dc416fb38b3845f32277685028e52f01fa98a4d121a07",
 							"fbbb8233f1435c2c0ab26ee4aeb94e534490c65a48e253a5dc64cad835462d29",
 						},
+						SignData: "ddd8e2eb9290b4ff95777a823c3193655e16314b37037145369768dc000fe9b8",
 					},
 				},
 				Outputs: []annotatedOutput{
