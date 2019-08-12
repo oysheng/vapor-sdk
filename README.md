@@ -30,6 +30,7 @@ Decode a serialized transaction hex string into a JSON object describing the tra
   - `String` - *arbitrary*, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.
   - `Array of String` - *arguments*, witness arguments.
   - `String` - *vote*, vote xpub, it only exist when type is 'veto'.
+  - `String` - *sign_data*, sign data, it only exist when type is 'veto', 'cross_chain_in', 'spend'.
 - `Array of Object` - *outputs*, object of outputs for the transaction.
   - `String` - *type*, the type of output action, available option include: 'control', 'cross_chain_out', 'vote', 'retire'.
   - `String` - *utxo_id*, outputid related to utxo.
@@ -58,19 +59,20 @@ Decode a serialized transaction hex string into a JSON object describing the tra
   "inputs": [
     {
       "type": "spend",
-      "input_id": "7d9c3a6481fd249c78f6037d3c999a3fe753882bd13e072cecc8ce92fbbbb41b",
+      "input_id": "84d1a1ebf56015eec08b4f21556ad5ee5faed86e0f3b6b0d2366f8ea4280959d",
       "asset": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
       "amount": 10000000,
       "script": "00144b6995dc11354d44c6e382c19d6b92bdbbd3aea1",
       "address": "vp1qfd5ethq3x4x5f3hrstqe66ujhkaa8t4p8vud4p",
-      "spent_output_id": "873cd20c2cd260e1d2902f173bbc32490a9aa184b8e47aaedf3f37d7bf5225dd",
+      "spent_output_id": "bf099ee53337ce14411e31d392fcf65f25ab7bc993f10ca06fbaf7d74a6d9c5d",
+      "sign_data": "8d30d28aeed8c8b69a941ecc1e0da8dafd8b022b48c82c0d5eb8283870569aa8",
       "arguments": null
     }
   ],
   "outputs": [
     {
       "type": "control",
-      "utxo_id": "1df78ee679f30bb4597e1c3e459a0cd0429e69de875dd85a57fa34f94a59aba4",
+      "utxo_id": "ff91113d21213c9a2338b512257345be91f85e403d8df51f57e06673bd231c49",
       "position": 0,
       "asset": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
       "amount": 5000000,
@@ -79,7 +81,7 @@ Decode a serialized transaction hex string into a JSON object describing the tra
     },
     {
       "type": "control",
-      "utxo_id": "6d1116c361d8001e5f2d491c796eb36b5cb53dd630c1310a9be13742fd6e9cbc",
+      "utxo_id": "7a16706c5deabee77c3626eaf7e71e1ccedda771e2f2aedcb009ebb044c367d1",
       "position": 1,
       "asset": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
       "amount": 5000000,
