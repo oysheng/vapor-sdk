@@ -2,7 +2,6 @@ package consensus
 
 import (
 	"encoding/binary"
-	"fmt"
 
 	"github.com/vapor/protocol/bc"
 )
@@ -225,12 +224,4 @@ func BytomMainNetParams(vaporParam *Params) *Params {
 		bech32HRPSegwit = "tm"
 	}
 	return &Params{Bech32HRPSegwit: bech32HRPSegwit}
-}
-
-func InitActiveNetParams(chainID string) error {
-	var exist bool
-	if ActiveNetParams, exist = NetParams[chainID]; !exist {
-		return fmt.Errorf("chain_id[%v] don't exist", chainID)
-	}
-	return nil
 }
