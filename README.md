@@ -14,7 +14,7 @@ Decode a serialized transaction hex string into a JSON object describing the tra
 
 `Object`:
 
-- `String` - *hash*, transaction ID.
+- `String` - *tx_id*, transaction ID.
 - `Integer` - *version*, version of transaction.
 - `String` - *size*, size of transaction.
 - `String` - *time_range*, time range of transaction.
@@ -29,9 +29,10 @@ Decode a serialized transaction hex string into a JSON object describing the tra
   - `String` - *spent_output_id*, the front of outputID to be spent in this input, it only exist when type is 'veto', 'spend', 'cross_chain_in'.
   - `String` - *arbitrary*, arbitrary infomation can be set by miner, it only exist when type is 'coinbase'.
   - `Array of String` - *arguments*, witness arguments.
+  - `String` - *vote*, vote xpub, it only exist when type is 'veto'.
 - `Array of Object` - *outputs*, object of outputs for the transaction.
   - `String` - *type*, the type of output action, available option include: 'control', 'cross_chain_out', 'vote', 'retire'.
-  - `String` - *output_id*, outputid related to utxo.
+  - `String` - *utxo_id*, outputid related to utxo.
   - `Integer` - *position*, position of outputs.
   - `String` - *asset*, asset id.
   - `Integer` - *amount*, amount of asset.
