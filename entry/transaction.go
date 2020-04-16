@@ -1,17 +1,17 @@
 package entry
 
 import (
-	"github.com/vapor-sdk/bytom"
-	"github.com/vapor-sdk/vapor"
+	bytomsdk "github.com/vapor-sdk/bytom"
+	vaporsdk "github.com/vapor-sdk/vapor"
 )
 
 // DecodeRawTx decode raw transaction for bytom and vapor
 func DecodeRawTx(chainName, rawTransaction string) []byte {
 	switch chainName {
 	case "bytom":
-		return bytom.BytomDecodeRawTx(rawTransaction)
+		return bytomsdk.BytomDecodeRawTx(rawTransaction)
 	case "vapor":
-		return vapor.VaporDecodeRawTx(rawTransaction)
+		return vaporsdk.VaporDecodeRawTx(rawTransaction)
 	default:
 		return nil
 	}
