@@ -4,13 +4,13 @@ import (
 	"encoding/hex"
 	"encoding/json"
 
-	"github.com/bytom/blockchain/txbuilder"
-	"github.com/bytom/common"
-	"github.com/bytom/consensus"
-	"github.com/bytom/consensus/segwit"
-	"github.com/bytom/protocol/bc"
-	"github.com/bytom/protocol/bc/types"
-	"github.com/bytom/protocol/vm/vmutil"
+	"github.com/bytom/bytom/blockchain/txbuilder"
+	"github.com/bytom/bytom/common"
+	"github.com/bytom/bytom/consensus"
+	"github.com/bytom/bytom/consensus/segwit"
+	"github.com/bytom/bytom/protocol/bc"
+	"github.com/bytom/bytom/protocol/bc/types"
+	"github.com/bytom/bytom/protocol/vm/vmutil"
 
 	"github.com/vapor-sdk/util"
 )

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/vapor/testutil"
+	"github.com/bytom/bytom/testutil"
 
 	"github.com/vapor-sdk/util"
 )
